@@ -11,7 +11,6 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "1.12.13+hotfix.8"
           channel: "stable"
       - run: flutter pub get
       - run: flutter build apk
@@ -26,7 +25,6 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "1.12.13+hotfix.8"
           channel: "stable"
       - run: flutter pub get
       - run: flutter build apk --target-platform android-arm64
