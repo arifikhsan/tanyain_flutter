@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:tanyain_flutter/core/exception/server_exception.dart';
 import 'package:tanyain_flutter/core/failure/server_failure.dart';
 import 'package:tanyain_flutter/feature/question/data/datasource/question_remote_datasource.dart';
-import 'package:tanyain_flutter/feature/question/domain/entity/question.dart';
+import 'package:tanyain_flutter/feature/question/domain/entity/question_entity.dart';
 import 'package:tanyain_flutter/core/failure/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:tanyain_flutter/feature/question/domain/repository/question_repository.dart';
@@ -14,7 +14,8 @@ class QuestionRepositoryImpl implements QuestionRepository {
   QuestionRepositoryImpl(this.remoteDatasource);
 
   @override
-  Future<Either<Failure, Stream<List<Question>>>> streamQuestions() async {
+  Future<Either<Failure, Stream<List<QuestionEntity>>>>
+      streamQuestions() async {
     try {
       final remoteQuestion = await remoteDatasource.streamQuestions();
       return right(remoteQuestion);
@@ -24,12 +25,12 @@ class QuestionRepositoryImpl implements QuestionRepository {
   }
 
   @override
-  Future<Either<Failure, Question>> getQuestion(String id) {
+  Future<Either<Failure, QuestionEntity>> getQuestion(String id) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, Unit>> addQuestion(Question question) {
+  Future<Either<Failure, Unit>> addQuestion(QuestionEntity question) {
     throw UnimplementedError();
   }
 
@@ -39,7 +40,7 @@ class QuestionRepositoryImpl implements QuestionRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> updateQuestion(Question question) {
+  Future<Either<Failure, Unit>> updateQuestion(QuestionEntity question) {
     throw UnimplementedError();
   }
 }

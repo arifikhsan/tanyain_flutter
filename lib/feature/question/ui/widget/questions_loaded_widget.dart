@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tanyain_flutter/feature/question/data/model/question_model.dart';
-import 'package:tanyain_flutter/feature/question/domain/entity/question.dart';
+import 'package:tanyain_flutter/feature/question/domain/entity/question_entity.dart';
 
 class QuestionsLoadedWidget extends StatelessWidget {
-  final List<Question> questions;
+  final List<QuestionEntity> questions;
 
   const QuestionsLoadedWidget({
     Key key,

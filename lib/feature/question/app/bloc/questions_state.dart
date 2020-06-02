@@ -15,7 +15,7 @@ class QuestionsLoadingState extends QuestionsState {
 }
 
 class QuestionsLoadedState extends QuestionsState {
-  final List<Question> questions;
+  final List<QuestionEntity> questions;
 
   QuestionsLoadedState({
     @required this.questions,

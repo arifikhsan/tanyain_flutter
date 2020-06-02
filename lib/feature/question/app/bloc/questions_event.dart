@@ -10,7 +10,7 @@ class StreamQuestionsEvent extends QuestionsEvent {
 }
 
 class QuestionsUpdatedEvent extends QuestionsEvent {
-  final List<Question> questions;
+  final List<QuestionEntity> questions;
 
   QuestionsUpdatedEvent({
     this.questions,
