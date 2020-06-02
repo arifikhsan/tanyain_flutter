@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "784720713997",
+    "firebase_url": "https://tanyain-sekarang.firebaseio.com",
+    "project_id": "tanyain-sekarang",
+    "storage_bucket": "tanyain-sekarang.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784720713997:android:8300554b4813250962b844",
+        "android_client_info": {
+          "package_name": "sh.now.arifikhsanudin.tanyain_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784720713997-jkp13ne9uv0u3ktfesd1u29goglrvtds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALuJd4Dn46j3ugi0vn8mO6CPp-sJOn7tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784720713997-jkp13ne9uv0u3ktfesd1u29goglrvtds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
