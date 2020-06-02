@@ -8,9 +8,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentPageIndex = 0;
+  int _currentPageIndex = 0;
 
-  List<Widget> currentPageWidget = [
+  List<Widget> _pages = [
     QuestionsScreen(),
     SearchScreen(),
   ];
@@ -18,12 +18,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: currentPageWidget.elementAt(currentPageIndex),
+      body: _pages.elementAt(_currentPageIndex),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentPageIndex,
+        currentIndex: _currentPageIndex,
         onTap: (index) {
           setState(() {
-            currentPageIndex = index;
+            _currentPageIndex = index;
           });
         },
         items: [
