@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tanyain_flutter/feature/question/ui/screen/question_screen.dart';
+import 'package:tanyain_flutter/feature/question/ui/screen/questions_screen.dart';
 import 'package:tanyain_flutter/feature/search/ui/screen/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
 
   List<Widget> currentPageWidget = [
-    QuestionScreen(),
+    QuestionsScreen(),
     SearchScreen(),
   ];
 
