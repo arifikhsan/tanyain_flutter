@@ -4,10 +4,10 @@ import 'package:tanyain_flutter/feature/question/app/question_bloc/question_bloc
 import 'package:tanyain_flutter/feature/question/app/questions_bloc/questions_bloc.dart';
 import 'package:tanyain_flutter/injector/injector.dart';
 
-class QuestionBlocProvider extends StatelessWidget {
+class QuestionMultiBlocProvider extends StatelessWidget {
   final Widget child;
 
-  const QuestionBlocProvider({Key key, this.child}) : super(key: key);
+  const QuestionMultiBlocProvider({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
