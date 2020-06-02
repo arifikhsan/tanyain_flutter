@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-class Question {
+class Question extends Equatable {
   final String id;
   final String title;
   final String body;
@@ -10,4 +11,7 @@ class Question {
     @required this.title,
     this.body,
   });
+
+  @override
+  List<Object> get props => [id, title, body];
 }

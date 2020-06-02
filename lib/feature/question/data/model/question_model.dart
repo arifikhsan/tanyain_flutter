@@ -16,7 +16,7 @@ class QuestionModel extends Question {
     };
   }
 
-  QuestionModel fromsnapshot(DocumentSnapshot snapshot) {
+  static QuestionModel fromsnapshot(DocumentSnapshot snapshot) {
     return QuestionModel(
       id: snapshot.documentID,
       title: snapshot.data['title'],
