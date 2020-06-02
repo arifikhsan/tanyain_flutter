@@ -17,11 +17,9 @@ class QuestionsLoadedWidget extends StatelessWidget {
         itemCount: questions.length,
         itemBuilder: (BuildContext context, int index) {
           final QuestionModel question = questions.elementAt(index);
-          print(question.title);
           return Container(
             margin: EdgeInsets.all(8),
             padding: EdgeInsets.all(8),
-            height: 100,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -34,8 +32,16 @@ class QuestionsLoadedWidget extends StatelessWidget {
             ),
             width: double.infinity,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(question.title),
+                Text(
+                  question.title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade700,
+                  ),
+                ),
               ],
             ),
           );
@@ -43,7 +49,7 @@ class QuestionsLoadedWidget extends StatelessWidget {
       );
     } else {
       return Center(
-        child: Text('No todos'),
+        child: Text('No questions'),
       );
     }
   }

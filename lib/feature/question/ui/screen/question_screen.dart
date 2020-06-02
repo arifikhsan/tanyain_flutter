@@ -26,7 +26,6 @@ class QuestionScreen extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is QuestionsLoadedState) {
-              print(state.questions.first);
               return QuestionsLoadedWidget(
                 questions: state.questions,
               );
