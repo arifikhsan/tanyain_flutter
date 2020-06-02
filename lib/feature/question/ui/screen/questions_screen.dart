@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tanyain_flutter/feature/question/app/bloc/questions_bloc.dart';
+import 'package:tanyain_flutter/feature/question/app/questions_bloc/questions_bloc.dart';
+import 'package:tanyain_flutter/feature/question/ui/provider/question_bloc_provider.dart';
 import 'package:tanyain_flutter/feature/question/ui/widget/questions_loaded_widget.dart';
-import 'package:tanyain_flutter/injector/injector.dart';
 
-class QuestionsScreen extends StatelessWidget {
+class QuestionsScreen extends StatefulWidget {
+  @override
+  _QuestionsScreenState createState() => _QuestionsScreenState();
+}
+
+class _QuestionsScreenState extends State<QuestionsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<QuestionsBloc>(context).add(StreamQuestionsEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,9 +23,7 @@ class QuestionsScreen extends StatelessWidget {
         title: Text('Tanyain'),
         centerTitle: true,
       ),
-      body: BlocProvider(
-        create: (context) =>
-            locator<QuestionsBloc>()..add(StreamQuestionsEvent()),
+      body: QuestionBlocProvider(
         child: BlocBuilder<QuestionsBloc, QuestionsState>(
           builder: (context, state) {
             if (state is QuestionsEmptyState) {

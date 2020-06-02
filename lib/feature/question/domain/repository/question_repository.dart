@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:tanyain_flutter/core/failure/failure.dart';
-import 'package:tanyain_flutter/feature/question/domain/entity/question_entity.dart';
+import 'package:tanyain_flutter/feature/question/data/model/question_model.dart';
 
 abstract class QuestionRepository {
-  Future<Either<Failure, Stream<List<QuestionEntity>>>> streamQuestions();
-  Future<Either<Failure, QuestionEntity>> getQuestion(String id);
-  Future<Either<Failure, Unit>> addQuestion(QuestionEntity question);
-  Future<Either<Failure, Unit>> updateQuestion(QuestionEntity question);
+  Future<Either<Failure, Stream<List<QuestionModel>>>> streamQuestions();
+  Future<Either<Failure, QuestionModel>> getQuestion(String id);
+  Future<Either<Failure, Unit>> addQuestion(QuestionModel questionModel);
+  Future<Either<Failure, Unit>> updateQuestion(QuestionModel questionModel);
   Future<Either<Failure, Unit>> deleteQuestion(String id);
 }
