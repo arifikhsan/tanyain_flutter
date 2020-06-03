@@ -44,7 +44,7 @@ class FirebaseAuthFacadeRepositoryImpl implements AuthFacadeRepository {
       return firebaseAuth
           .signInWithCredential(authCredential)
           .then((value) => right(unit));
-    } on PlatformException {
+    } on PlatformException catch (_) {
       return left(AuthFailure.serverError());
     }
   }

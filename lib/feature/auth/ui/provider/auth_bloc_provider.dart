@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tanyain_flutter/feature/auth/app/auth_bloc/auth_bloc.dart';
+import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
 import 'package:tanyain_flutter/injector/injector.dart';
 
 class AuthBlocProvider extends StatelessWidget {
@@ -14,6 +15,9 @@ class AuthBlocProvider extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => locator<AuthBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => locator<AuthCheckBloc>(),
         ),
       ],
       child: child,

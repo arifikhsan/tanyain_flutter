@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           state.maybeMap(
             unauthenticated: (_) {
               ExtendedNavigator.ofRouter<Router>()
-                  .pushReplacementNamed(Routes.homeScreen);
+                  .pushReplacementNamed(Routes.loginScreen);
             },
             orElse: () {},
           );

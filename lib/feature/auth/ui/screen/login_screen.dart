@@ -3,6 +3,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tanyain_flutter/feature/auth/app/auth_bloc/auth_bloc.dart';
+import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
 import 'package:tanyain_flutter/feature/auth/ui/provider/auth_bloc_provider.dart';
 import 'package:tanyain_flutter/router/router.gr.dart';
 
@@ -34,6 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
               (unit) {
                 ExtendedNavigator.ofRouter<Router>()
                     .pushReplacementNamed(Routes.homeScreen);
+                context
+                    .bloc<AuthCheckBloc>()
+                    .add(AuthCheckEvent.authCheckRequested());
               },
             ),
           );
@@ -52,6 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     context
                         .bloc<AuthBloc>()
                         .add(AuthEvent.loginWithGooglePressed());
+                    context
+                        .bloc<AuthCheckBloc>()
+                        .add(AuthCheckEvent.authCheckRequested());
                   },
                 ),
               ),
