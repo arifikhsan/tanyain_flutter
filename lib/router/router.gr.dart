@@ -10,15 +10,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:tanyain_flutter/feature/splash/ui/screen/splash_screen.dart';
 import 'package:tanyain_flutter/feature/home/ui/screen/home_screen.dart';
 import 'package:tanyain_flutter/feature/question/ui/screen/question_screen.dart';
+import 'package:tanyain_flutter/feature/auth/ui/screen/login_screen.dart';
 
 abstract class Routes {
   static const splashScreen = '/';
   static const homeScreen = '/home-screen';
   static const questionScreen = '/question-screen';
+  static const loginScreen = '/login-screen';
   static const all = {
     splashScreen,
     homeScreen,
     questionScreen,
+    loginScreen,
   };
 }
 
@@ -53,6 +56,11 @@ class Router extends RouterBase {
         return MaterialPageRoute<dynamic>(
           builder: (context) =>
               QuestionScreen(key: typedArgs.key, id: typedArgs.id),
+          settings: settings,
+        );
+      case Routes.loginScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => LoginScreen(),
           settings: settings,
         );
       default:
