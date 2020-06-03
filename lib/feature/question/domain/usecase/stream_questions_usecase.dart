@@ -13,7 +13,7 @@ class StreamQuestionsUsecase
 
   @override
   Future<Either<Failure, Stream<List<QuestionEntity>>>> call(
-    NoParam params,
+    NoParam noParam,
   ) async {
     return await questionRepository.streamQuestions();
   }

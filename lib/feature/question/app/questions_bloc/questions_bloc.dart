@@ -21,9 +21,7 @@ class QuestionsBloc extends Bloc<QuestionsEvent, QuestionsState> {
   QuestionsState get initialState => QuestionsEmptyState();
 
   @override
-  Stream<QuestionsState> mapEventToState(
-    QuestionsEvent event,
-  ) async* {
+  Stream<QuestionsState> mapEventToState(QuestionsEvent event) async* {
     if (event is StreamQuestionsEvent) {
       yield* mapStreamQuestionsEventToState();
     } else if (event is QuestionsUpdatedEvent) {

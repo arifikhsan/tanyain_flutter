@@ -11,7 +11,7 @@ class GetQuestionUsecase implements Usecase<QuestionEntity, StringIdParam> {
   GetQuestionUsecase(this.questionRepository);
 
   @override
-  Future<Either<Failure, QuestionEntity>> call(StringIdParam params) async {
-    return await questionRepository.getQuestion(params.id);
+  Future<Either<Failure, QuestionEntity>> call(StringIdParam param) async {
+    return await questionRepository.getQuestion(param.id);
   }
 }
