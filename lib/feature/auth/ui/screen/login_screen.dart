@@ -52,8 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     context
                         .bloc<AuthBloc>()
                         .add(AuthEvent.loginWithGooglePressed());
-                    // BlocProvider.of<AuthBloc>(context)
-                    //     .add(AuthEvent.loginWithGooglePressed());
                   },
                 ),
               ),
