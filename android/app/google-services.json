@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "784720713997-spht06jkrijcassml3q0o48ijjvvouas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sh.now.arifikhsanudin.tanyain_flutter",
+            "certificate_hash": "8e130a72904092b98d22a4d90f504f12141835af"
+          }
+        },
+        {
           "client_id": "784720713997-jkp13ne9uv0u3ktfesd1u29goglrvtds.apps.googleusercontent.com",
           "client_type": 3
         }

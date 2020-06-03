@@ -1,12 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:tanyain_flutter/feature/home/ui/screen/home_screen.dart';
+import 'package:tanyain_flutter/router/router.gr.dart';
 
 class TanyainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: HomeScreen(),
+      builder: ExtendedNavigator<Router>(router: Router()),
     );
   }
 }

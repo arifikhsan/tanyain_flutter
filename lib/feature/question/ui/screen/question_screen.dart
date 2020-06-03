@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tanyain_flutter/feature/question/app/question_bloc/question_bloc.dart';
-import 'package:tanyain_flutter/feature/question/ui/provider/question_multi_bloc_provider.dart';
+import 'package:tanyain_flutter/feature/question/ui/provider/question_bloc_provider.dart';
 import 'package:tanyain_flutter/feature/question/ui/widget/question_loaded_widget.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -15,19 +15,13 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<QuestionBloc>(context).add(GetQuestionEvent(id: widget.id));
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tanyain'),
         centerTitle: true,
       ),
-      body: QuestionMultiBlocProvider(
+      body: QuestionBlocProvider(
         child: BlocBuilder<QuestionBloc, QuestionState>(
           builder: (context, state) {
             if (state is QuestionEmptyState) {
