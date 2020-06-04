@@ -16,7 +16,7 @@ jobs:
       - run: flutter build apk
   artifact:
     name: Create artifact
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v2
@@ -37,4 +37,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: hello from github actions
+          message: test document
+          document: build/app/outputs/apk/release/app-release.apk
