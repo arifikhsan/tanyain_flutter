@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:tanyain_flutter/core/failure/auth_failure.dart';
 import 'package:tanyain_flutter/core/usecase/no_param.dart';
@@ -13,6 +14,7 @@ part 'login_form_state.dart';
 
 part 'login_form_bloc.freezed.dart';
 
+@injectable
 class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
   final LoginWithGoogleUsecase loginWithGoogleUsecase;
 

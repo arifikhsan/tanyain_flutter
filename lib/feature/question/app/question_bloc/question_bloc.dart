@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/usecase/string_id_param.dart';
 import 'package:tanyain_flutter/feature/question/domain/entity/question_entity.dart';
 import 'package:tanyain_flutter/feature/question/domain/usecase/get_question_usecase.dart';
@@ -10,6 +11,7 @@ import 'package:tanyain_flutter/feature/question/domain/usecase/get_question_use
 part 'question_event.dart';
 part 'question_state.dart';
 
+@injectable
 class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
   final GetQuestionUsecase getQuestionUsecase;
 

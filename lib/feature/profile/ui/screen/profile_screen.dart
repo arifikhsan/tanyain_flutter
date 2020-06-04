@@ -11,7 +11,11 @@ class ProfileScreen extends StatelessWidget {
     return ProfileBlocProvider(
       child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          if (state is CurrentUserProfileLoadedState) {
+          if (state is ProfileInitial) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is CurrentUserProfileLoadedState) {
             return ProfileLoadedWidget(
               userModel: state.userModel,
             );

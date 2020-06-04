@@ -31,8 +31,7 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 
 ## Todo
 
-[ ] injection
+[x] auth form bloc (core) get current user, logout
+[x] login form bloc
+[x] injection
 [ ] integration test
-[ ] login form bloc
-[ ] register form bloc
-[ ] auth form bloc (core) get current user, logout

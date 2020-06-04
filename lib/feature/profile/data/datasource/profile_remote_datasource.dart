@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
 
 abstract class ProfileRemoteDatasource {
   Future<UserModel> getCurrentUser();
 }
 
+@LazySingleton(as: ProfileRemoteDatasource)
 class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   final FirebaseAuth firebaseAuth;
 

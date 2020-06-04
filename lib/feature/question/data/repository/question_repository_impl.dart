@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/exception/server_exception.dart';
 import 'package:tanyain_flutter/core/failure/server_failure.dart';
 import 'package:tanyain_flutter/feature/question/data/datasource/question_remote_datasource.dart';
@@ -8,6 +9,7 @@ import 'package:tanyain_flutter/core/failure/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:tanyain_flutter/feature/question/domain/repository/question_repository.dart';
 
+@LazySingleton(as: QuestionRepository)
 class QuestionRepositoryImpl implements QuestionRepository {
   final QuestionRemoteDatasource remoteDatasource;
 

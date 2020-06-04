@@ -31,7 +31,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           builder: (context, state) {
             if (state is QuestionEmptyState) {
               return Center(
-                child: Text('dude empty ${widget.id}'),
+                child: CircularProgressIndicator(),
               );
             } else if (state is QuestionLoadingState) {
               return Center(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
 import 'package:tanyain_flutter/core/feature/domain/usecase/get_current_user_usecase.dart';
@@ -12,6 +13,7 @@ part 'auth_state.dart';
 
 part 'auth_bloc.freezed.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthFacadeRepository authFacadeRepository;
   final GetCurrentUserUsecase getCurrentUserUsecase;
@@ -31,9 +33,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield* event.map(
       checkRequested: (e) async* {
         final userOption = await authFacadeRepository.getLoggedInUser();
-        yield userOption.fold(
-          () => AuthState.unauthenticated(),
-          (userModel) => AuthState.authenticated(userModel),
+        yield* userOption.fold(
+          () async* {
+            yield AuthState.unauthenticated();
+          },
+          (userModel) async* {
+            yield AuthState.authenticated(userModel);
+          },
         );
       },
       logout: (e) async* {

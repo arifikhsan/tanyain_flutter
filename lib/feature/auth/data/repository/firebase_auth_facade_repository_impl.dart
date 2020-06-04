@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/failure/auth_failure.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
 import 'package:tanyain_flutter/feature/auth/domain/repository/auth_facade_repository.dart';
 
+@LazySingleton(as: AuthFacadeRepository)
 class FirebaseAuthFacadeRepositoryImpl implements AuthFacadeRepository {
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;

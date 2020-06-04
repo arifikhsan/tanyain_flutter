@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/feature/question/data/model/question_model.dart';
 
 abstract class QuestionRemoteDatasource {
@@ -10,6 +11,7 @@ abstract class QuestionRemoteDatasource {
   Future<Unit> deleteQuestion(String id);
 }
 
+@LazySingleton(as: QuestionRemoteDatasource)
 class QuestionRemoteDatasourceImpl implements QuestionRemoteDatasource {
   final questionCollection = Firestore.instance.collection('questions');
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
 import 'package:tanyain_flutter/core/feature/domain/usecase/get_current_user_usecase.dart';
 import 'package:tanyain_flutter/core/usecase/no_param.dart';
@@ -10,6 +11,7 @@ import 'package:tanyain_flutter/core/usecase/no_param.dart';
 part 'profile_event.dart';
 part 'profile_state.dart';
 
+@injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final GetCurrentUserUsecase getCurrentUserUsecase;
 

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
 
 abstract class AuthRemoteDatasource {
@@ -8,6 +9,7 @@ abstract class AuthRemoteDatasource {
   Future<void> logout();
 }
 
+@LazySingleton(as: AuthRemoteDatasource)
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
