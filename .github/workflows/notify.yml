@@ -1,0 +1,13 @@
+name: Notify
+on: push
+jobs:
+  notify:
+    name: Notify
+    runs-on: macos-latest
+    steps:
+      - name: Telegram Notify
+        uses: appleboy/telegram-action@0.0.7
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: hello from github actions notify
