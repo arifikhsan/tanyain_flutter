@@ -10,4 +10,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ secrets.GITHUB_ACTOR }} $${{ secrets.GITHUB_EVENT_NAME }} ヾ(≧▽≦*)o  o((>ω< ))o
+          message: o((>ω< ))o
