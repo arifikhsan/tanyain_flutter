@@ -48,7 +48,8 @@ class ProfileLoadedWidget extends StatelessWidget {
                 icon: Icon(Icons.close),
                 label: Text('Logout'),
                 onPressed: () {
-                  BlocProvider.of(context).add(AuthCheckEvent.loggedOut());
+                  BlocProvider.of<AuthCheckBloc>(context)
+                      .add(AuthCheckEvent.loggedOut());
                 },
               ),
             ),

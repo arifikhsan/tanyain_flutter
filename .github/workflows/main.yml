@@ -32,5 +32,9 @@ jobs:
         with:
           name: app-release
           path: build/app/outputs/apk/release/app-release.apk
-      # - name: Telegram Notify
-      #   uses: appleboy/telegram-action@0.0.3
+      - name: Telegram Notify
+        uses: appleboy/telegram-action@0.0.7
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: hello from github actions
