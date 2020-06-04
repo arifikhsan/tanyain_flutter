@@ -3,7 +3,7 @@ on: push
 jobs:
   notify:
     name: Notify
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Telegram Notify
         uses: appleboy/telegram-action@0.0.7
