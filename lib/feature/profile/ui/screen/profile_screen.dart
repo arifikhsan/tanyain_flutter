@@ -1,37 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tanyain_flutter/feature/auth/app/auth_bloc/auth_bloc.dart';
 import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
+import 'package:tanyain_flutter/feature/profile/app/bloc/profile_bloc.dart';
 import 'package:tanyain_flutter/feature/profile/ui/provider/profile_bloc_provider.dart';
+import 'package:tanyain_flutter/feature/profile/ui/screen/profile_loaded_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProfileBlocProvider(
-      child: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+      child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Profile'),
-              centerTitle: true,
-            ),
-            body: Container(
-              child: Center(
-                child: RaisedButton.icon(
-                  icon: Icon(Icons.close),
-                  label: Text('Logout'),
-                  onPressed: () {
-                    context
-                        .bloc<AuthCheckBloc>()
-                        .add(AuthCheckEvent.loggedOut());
-                  },
-                ),
-              ),
-            ),
-          );
+          if (state is CurrentUserProfileLoadedState) {
+            return ProfileLoadedWidget(
+              userModel: state.userModel,
+            );
+          } else if (state is ProfileErrorState) {
+            return Center(
+              child: Text('Error State?'),
+            );
+          } else {
+            return Center(
+              child: Text('Whats happen?'),
+            );
+          }
         },
       ),
     );

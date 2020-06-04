@@ -7,6 +7,11 @@ import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc
 import 'package:tanyain_flutter/feature/auth/data/repository/firebase_auth_facade_repository_impl.dart';
 import 'package:tanyain_flutter/feature/auth/domain/repository/auth_facade_repository.dart';
 import 'package:tanyain_flutter/feature/auth/domain/usecase/login_with_google_usecase.dart';
+import 'package:tanyain_flutter/feature/profile/app/bloc/profile_bloc.dart';
+import 'package:tanyain_flutter/feature/profile/data/datasource/profile_remote_datasource.dart';
+import 'package:tanyain_flutter/feature/profile/data/repository/profile_repository_impl.dart';
+import 'package:tanyain_flutter/feature/profile/domain/repository/profile_repository.dart';
+import 'package:tanyain_flutter/feature/profile/domain/usecase/get_current_user_usecase.dart';
 import 'package:tanyain_flutter/feature/question/app/question_bloc/question_bloc.dart';
 import 'package:tanyain_flutter/feature/question/app/questions_bloc/questions_bloc.dart';
 import 'package:tanyain_flutter/feature/question/data/datasource/question_remote_datasource.dart';
@@ -24,11 +29,13 @@ setupLocator() {
   locator.registerFactory(() => QuestionBloc(getQuestionUsecase: locator()));
   locator.registerFactory(() => AuthBloc(loginWithGoogleUsecase: locator()));
   locator.registerFactory(() => AuthCheckBloc(authFacadeRepository: locator()));
+  locator.registerFactory(() => ProfileBloc(getCurrentUserUsecase: locator()));
 
   // * Usecase
   locator.registerLazySingleton(() => StreamQuestionsUsecase(locator()));
   locator.registerLazySingleton(() => GetQuestionUsecase(locator()));
   locator.registerLazySingleton(() => LoginWithGoogleUsecase(locator()));
+  locator.registerLazySingleton(() => GetCurrentUserUsecase(locator()));
 
   // * Repository
   locator.registerLazySingleton<QuestionRepository>(
@@ -39,10 +46,15 @@ setupLocator() {
       googleSignIn: locator(),
     ),
   );
+  locator.registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(profileRemoteDatasource: locator()));
 
   // * Data Sources
   locator.registerLazySingleton<QuestionRemoteDatasource>(
     () => QuestionRemoteDatasourceImpl(),
+  );
+  locator.registerLazySingleton<ProfileRemoteDatasource>(
+    () => ProfileRemoteDatasourceImpl(firebaseAuth: locator()),
   );
 
   // * External
