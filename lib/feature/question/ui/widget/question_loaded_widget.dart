@@ -36,8 +36,27 @@ class QuestionLoadedWidget extends StatelessWidget {
               color: Colors.grey.shade700,
             ),
           ),
+          _buildDetail(),
         ],
       ),
     );
+  }
+
+  Widget _buildDetail() {
+    if (question.body == null) {
+      return Container(
+        child: Container(
+          margin: EdgeInsets.only(top: 8),
+          child: Text('Belum ada jawaban.'),
+        ),
+      );
+    } else {
+      return Container(
+        child: Container(
+          margin: EdgeInsets.only(top: 8),
+          child: Text(question.body),
+        ),
+      );
+    }
   }
 }

@@ -30,40 +30,43 @@ class _LoginScreenState extends State<LoginScreen> {
                     invalidEmailAndPasswordCombination: (_) =>
                         'invalidEmailAndPasswordCombination',
                   ),
+                  duration: Duration(seconds: 3),
                 )..show(context);
               },
               (unit) {
                 ExtendedNavigator.ofRouter<Router>()
                     .pushReplacementNamed(Routes.homeScreen);
-                context
-                    .bloc<AuthCheckBloc>()
-                    .add(AuthCheckEvent.authCheckRequested());
               },
             ),
           );
         },
         builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Login'),
-            ),
-            body: Container(
-              child: Center(
-                child: RaisedButton.icon(
-                  icon: Icon(Icons.vpn_key),
-                  label: Text('Login With Google'),
-                  onPressed: () {
-                    context
-                        .bloc<AuthBloc>()
-                        .add(AuthEvent.loginWithGooglePressed());
-                    context
-                        .bloc<AuthCheckBloc>()
-                        .add(AuthCheckEvent.authCheckRequested());
-                  },
+          if (state.isSubmitting) {
+            return Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          } else {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Login'),
+              ),
+              body: Container(
+                child: Center(
+                  child: RaisedButton.icon(
+                    icon: Icon(Icons.vpn_key),
+                    label: Text('Login With Google'),
+                    onPressed: () {
+                      context
+                          .bloc<AuthBloc>()
+                          .add(AuthEvent.loginWithGooglePressed());
+                    },
+                  ),
                 ),
               ),
-            ),
-          );
+            );
+          }
         },
       ),
     );

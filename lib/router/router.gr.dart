@@ -48,11 +48,10 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.questionScreen:
-        if (hasInvalidArgs<QuestionScreenArguments>(args)) {
+        if (hasInvalidArgs<QuestionScreenArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<QuestionScreenArguments>(args);
         }
-        final typedArgs =
-            args as QuestionScreenArguments ?? QuestionScreenArguments();
+        final typedArgs = args as QuestionScreenArguments;
         return MaterialPageRoute<dynamic>(
           builder: (context) =>
               QuestionScreen(key: typedArgs.key, id: typedArgs.id),
@@ -77,5 +76,5 @@ class Router extends RouterBase {
 class QuestionScreenArguments {
   final Key key;
   final String id;
-  QuestionScreenArguments({this.key, this.id});
+  QuestionScreenArguments({this.key, @required this.id});
 }

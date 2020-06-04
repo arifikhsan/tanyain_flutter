@@ -19,7 +19,6 @@ class FirebaseAuthFacadeRepositoryImpl implements AuthFacadeRepository {
   @override
   Future<Option<UserModel>> getLoggedInUser() async {
     final firebaseUser = await firebaseAuth.currentUser();
-    print(firebaseUser);
     return optionOf(UserModel.fromFirebaseUser(firebaseUser));
   }
 

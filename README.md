@@ -18,3 +18,13 @@ samples, guidance on mobile development, and a full API reference.
 Et minim cillum laborum labore nisi incididunt magna cupidatat culpa elit qui veniam occaecat ut.
 Incididunt officia veniam non adipisicing duis ad velit exercitation magna quis.
 Sint ut sint fugiat duis consequat fugiat deserunt tempor sint culpa qui.
+
+## Commands
+
+### Run generator
+
+```bash
+
+flutter packages pub run build_runner build --delete-conflicting-outputs
+
+```

@@ -7,7 +7,10 @@ import 'package:tanyain_flutter/feature/question/ui/widget/question_loaded_widge
 class QuestionScreen extends StatefulWidget {
   final String id;
 
-  const QuestionScreen({Key key, this.id}) : super(key: key);
+  const QuestionScreen({
+    Key key,
+    @required this.id,
+  }) : super(key: key);
 
   @override
   _QuestionScreenState createState() => _QuestionScreenState();
@@ -22,11 +25,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
         centerTitle: true,
       ),
       body: QuestionBlocProvider(
-        child: BlocBuilder<QuestionBloc, QuestionState>(
+        id: widget.id,
+        child: BlocConsumer<QuestionBloc, QuestionState>(
+          listener: (BuildContext context, QuestionState state) {},
           builder: (context, state) {
             if (state is QuestionEmptyState) {
               return Center(
-                child: Text('dude empty'),
+                child: Text('dude empty ${widget.id}'),
               );
             } else if (state is QuestionLoadingState) {
               return Center(
