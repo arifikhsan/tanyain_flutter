@@ -28,3 +28,11 @@ Sint ut sint fugiat duis consequat fugiat deserunt tempor sint culpa qui.
 flutter packages pub run build_runner build --delete-conflicting-outputs
 
 ```
+
+## Todo
+
+[ ] injection
+[ ] integration test
+[ ] login form bloc
+[ ] register form bloc
+[ ] auth form bloc (core) get current user, logout

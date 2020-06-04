@@ -2,21 +2,21 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:tanyain_flutter/core/failure/failure.dart';
 import 'package:tanyain_flutter/core/failure/server_failure.dart';
+import 'package:tanyain_flutter/core/feature/data/datasource/user_remote_datasource.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
-import 'package:tanyain_flutter/feature/profile/data/datasource/profile_remote_datasource.dart';
-import 'package:tanyain_flutter/feature/profile/domain/repository/profile_repository.dart';
+import 'package:tanyain_flutter/core/feature/domain/repository/user_repository.dart';
 
-class ProfileRepositoryImpl implements ProfileRepository {
-  final ProfileRemoteDatasource profileRemoteDatasource;
+class UserRepositoryImpl implements UserRepository {
+  final UserRemoteDatasource userRemoteDatasource;
 
-  ProfileRepositoryImpl({
-    this.profileRemoteDatasource,
+  UserRepositoryImpl({
+    this.userRemoteDatasource,
   });
 
   @override
   Future<Either<Failure, UserModel>> getCurrentUser() async {
     try {
-      final currentUser = await profileRemoteDatasource.getCurrentUser();
+      final currentUser = await userRemoteDatasource.getCurrentUser();
       return right(currentUser);
     } on PlatformException {
       return left(ServerFailure());

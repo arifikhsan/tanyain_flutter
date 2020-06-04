@@ -1,8 +1,0 @@
-part of 'login_bloc.dart';
-
-@freezed
-abstract class LoginEvent with _$LoginEvent {
-  const factory LoginEvent.loginInWithEmailAndPasswordPressed() =
-      LoginWithEmailAndPasswordPressed;
-  const factory LoginEvent.loginWithGooglePressed() = LoginWithGooglePressed;
-}

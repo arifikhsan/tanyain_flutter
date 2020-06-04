@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tanyain_flutter/feature/auth/app/auth_bloc/auth_bloc.dart';
-import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
+import 'package:tanyain_flutter/core/constant/message.dart';
+import 'package:tanyain_flutter/feature/auth/app/login_form_bloc/login_form_bloc.dart';
 import 'package:tanyain_flutter/feature/auth/ui/provider/auth_bloc_provider.dart';
 import 'package:tanyain_flutter/router/router.gr.dart';
 
@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return AuthBlocProvider(
-      child: BlocConsumer<AuthBloc, AuthState>(
+      child: BlocConsumer<LoginFormBloc, LoginFormState>(
         listener: (context, state) {
           state.authFailureOrSuccessOption.fold(
             () => {},
@@ -24,11 +24,11 @@ class _LoginScreenState extends State<LoginScreen> {
               (failure) {
                 Flushbar(
                   message: failure.map(
-                    cancelledByUser: (_) => 'cancelledByUser',
-                    serverError: (_) => 'serverError',
-                    emailAlreadyInUse: (_) => 'emailAlreadyInUse',
+                    cancelledByUser: (_) => CANCELLED_BY_USER,
+                    serverError: (_) => SERVER_ERROR,
+                    emailAlreadyInUse: (_) => EMAIL_ALREADY_IN_USE,
                     invalidEmailAndPasswordCombination: (_) =>
-                        'invalidEmailAndPasswordCombination',
+                        INVALID_EMAIL_AND_PASSWORD,
                   ),
                   duration: Duration(seconds: 3),
                 )..show(context);
@@ -59,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: Text('Login With Google'),
                     onPressed: () {
                       context
-                          .bloc<AuthBloc>()
-                          .add(AuthEvent.loginWithGooglePressed());
+                          .bloc<LoginFormBloc>()
+                          .add(LoginWithGooglePressedEvent());
                     },
                   ),
                 ),

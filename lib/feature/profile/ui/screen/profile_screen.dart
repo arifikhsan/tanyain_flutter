@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
+import 'package:tanyain_flutter/core/constant/message.dart';
 import 'package:tanyain_flutter/feature/profile/app/bloc/profile_bloc.dart';
 import 'package:tanyain_flutter/feature/profile/ui/provider/profile_bloc_provider.dart';
 import 'package:tanyain_flutter/feature/profile/ui/screen/profile_loaded_widget.dart';
@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
             );
           } else {
             return Center(
-              child: Text('Whats happen?'),
+              child: Text(WHATS_HAPPEN),
             );
           }
         },

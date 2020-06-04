@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tanyain_flutter/core/feature/app/auth_bloc/auth_bloc.dart';
 import 'package:tanyain_flutter/core/feature/data/model/user_model.dart';
-import 'package:tanyain_flutter/feature/auth/app/auth_check_bloc/auth_check_bloc.dart';
 
 class ProfileLoadedWidget extends StatelessWidget {
   final UserModel userModel;
@@ -48,8 +48,7 @@ class ProfileLoadedWidget extends StatelessWidget {
                 icon: Icon(Icons.close),
                 label: Text('Logout'),
                 onPressed: () {
-                  BlocProvider.of<AuthCheckBloc>(context)
-                      .add(AuthCheckEvent.loggedOut());
+                  BlocProvider.of<AuthBloc>(context).add(AuthEvent.logout());
                 },
               ),
             ),
