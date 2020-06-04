@@ -35,3 +35,14 @@ class QuestionErrorState extends QuestionState {
   @override
   List<Object> get props => [message];
 }
+
+class AddQuestionSuccessState extends QuestionState {
+  final String message;
+
+  AddQuestionSuccessState({
+    @required this.message,
+  });
+
+  @override
+  List<Object> get props => [message];
+}

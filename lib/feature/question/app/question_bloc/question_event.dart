@@ -1,14 +1,8 @@
 part of 'question_bloc.dart';
 
-abstract class QuestionEvent extends Equatable {
-  const QuestionEvent();
-}
-
-class GetQuestionEvent extends QuestionEvent {
-  final String id;
-
-  GetQuestionEvent({@required this.id});
-
-  @override
-  List<Object> get props => [];
+@freezed
+abstract class QuestionEvent with _$QuestionEvent {
+  const factory QuestionEvent.getQuestion(String id) = GetQuestion;
+  const factory QuestionEvent.addQuestion(QuestionModel questionModel) =
+      AddQuestion;
 }

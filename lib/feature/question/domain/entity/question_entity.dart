@@ -7,7 +7,7 @@ class QuestionEntity extends Equatable {
   final String body;
 
   QuestionEntity({
-    @required this.id,
+    this.id,
     @required this.title,
     this.body,
   });

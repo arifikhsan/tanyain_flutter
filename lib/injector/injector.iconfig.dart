@@ -18,6 +18,7 @@ import 'package:tanyain_flutter/feature/question/domain/usecase/stream_questions
 import 'package:tanyain_flutter/core/feature/data/datasource/user_remote_datasource.dart';
 import 'package:tanyain_flutter/core/feature/data/repository/user_repository_impl.dart';
 import 'package:tanyain_flutter/core/feature/domain/repository/user_repository.dart';
+import 'package:tanyain_flutter/feature/question/domain/usecase/add_question_usecase.dart';
 import 'package:tanyain_flutter/feature/auth/data/repository/firebase_auth_facade_repository_impl.dart';
 import 'package:tanyain_flutter/feature/auth/domain/repository/auth_facade_repository.dart';
 import 'package:tanyain_flutter/feature/auth/data/datasource/auth_remote_datasource.dart';
@@ -52,6 +53,8 @@ void $initGetIt(GetIt g, {String environment}) {
       () => UserRemoteDatasourceImpl(firebaseAuth: g<FirebaseAuth>()));
   g.registerLazySingleton<UserRepository>(() =>
       UserRepositoryImpl(userRemoteDatasource: g<UserRemoteDatasource>()));
+  g.registerLazySingleton<AddQuestionUsecase>(
+      () => AddQuestionUsecase(questionRepository: g<QuestionRepository>()));
   g.registerLazySingleton<AuthFacadeRepository>(() =>
       FirebaseAuthFacadeRepositoryImpl(
           firebaseAuth: g<FirebaseAuth>(), googleSignIn: g<GoogleSignIn>()));
@@ -65,8 +68,9 @@ void $initGetIt(GetIt g, {String environment}) {
       () => LoginWithGoogleUsecase(g<AuthFacadeRepository>()));
   g.registerFactory<ProfileBloc>(
       () => ProfileBloc(getCurrentUserUsecase: g<GetCurrentUserUsecase>()));
-  g.registerFactory<QuestionBloc>(
-      () => QuestionBloc(getQuestionUsecase: g<GetQuestionUsecase>()));
+  g.registerFactory<QuestionBloc>(() => QuestionBloc(
+      getQuestionUsecase: g<GetQuestionUsecase>(),
+      addQuestionUsecase: g<AddQuestionUsecase>()));
   g.registerFactory<QuestionsBloc>(
       () => QuestionsBloc(streamQuestionsUsecase: g<StreamQuestionsUsecase>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(
