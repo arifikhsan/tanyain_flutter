@@ -1,15 +1,16 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 class QuestionEntity extends Equatable {
   final String id;
   final String title;
   final String body;
+  final String createdAt;
 
   QuestionEntity({
     this.id,
-    @required this.title,
+    this.title,
     this.body,
+    this.createdAt,
   });
 
   @override

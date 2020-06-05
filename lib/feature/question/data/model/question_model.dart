@@ -1,18 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:tanyain_flutter/feature/question/domain/entity/question_entity.dart';
 
 class QuestionModel extends QuestionEntity {
   QuestionModel({
-    @required id,
-    @required title,
+    id,
+    title,
     body,
-  }) : super(id: id, title: title, body: body);
+    createdAt,
+  }) : super(
+          id: id,
+          title: title,
+          body: body,
+          createdAt: createdAt,
+        );
 
   Map<String, Object> toDocument() {
     return {
       'title': title,
       'body': body,
+      'created_at': createdAt,
     };
   }
 
@@ -21,6 +27,7 @@ class QuestionModel extends QuestionEntity {
       id: snapshot.documentID,
       title: snapshot.data['title'],
       body: snapshot.data['body'],
+      createdAt: snapshot.data['created_at'],
     );
   }
 }

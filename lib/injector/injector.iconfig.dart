@@ -8,6 +8,7 @@ import 'package:tanyain_flutter/injector/module/firebase_module.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tanyain_flutter/injector/mock/repository.dart';
 import 'package:tanyain_flutter/feature/profile/data/datasource/profile_remote_datasource.dart';
 import 'package:tanyain_flutter/feature/profile/data/repository/profile_repository_impl.dart';
 import 'package:tanyain_flutter/feature/profile/domain/repository/profile_repository.dart';
@@ -78,6 +79,11 @@ void $initGetIt(GetIt g, {String environment}) {
       getCurrentUserUsecase: g<GetCurrentUserUsecase>()));
   g.registerFactory<LoginFormBloc>(
       () => LoginFormBloc(loginWithGoogleUsecase: g<LoginWithGoogleUsecase>()));
+
+  //Register test Dependencies --------
+  if (environment == 'test') {
+    g.registerFactory<MockQuestionRepository>(() => MockQuestionRepository());
+  }
 }
 
 class _$FirebaseInjectableModule extends FirebaseInjectableModule {}

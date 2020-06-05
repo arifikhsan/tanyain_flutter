@@ -26,7 +26,6 @@ class FirebaseAuthFacadeRepositoryImpl implements AuthFacadeRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> loginWithEmailAndPassword() {
-    // TODO: implement loginWithEmailAndPassword
     throw UnimplementedError();
   }
 
@@ -52,7 +51,6 @@ class FirebaseAuthFacadeRepositoryImpl implements AuthFacadeRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword() {
-    // TODO: implement registerWithEmailAndPassword
     throw UnimplementedError();
   }
 
